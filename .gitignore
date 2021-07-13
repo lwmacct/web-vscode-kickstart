@@ -6,6 +6,8 @@ data/User/workspaceStorage/*
 .bash_history
 .ssh/*
 .cache/*
+.rpmdb/*
+.mume/*
 workspace/iso/*
 workspace/kickstart/mkisofs/*
 workspace/kickstart/bulid/docker-ce/finish/*
