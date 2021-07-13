@@ -4,6 +4,28 @@
 
 运行一个CentOS 容器,使用容器下载Docker相关依赖
 
+
+
+
+# 下载 file 文件夹内相关 yum.repos.d 
+
+
+```bash
+
+__yum_repos_d(){
+    rm -rf /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d
+    mkdir -p /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d/
+
+    curl -o /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+    curl -o /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+    sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d/CentOS-Base.repo
+}
+__yum_repos_d
+
+
+```
+
+
 ### 进入宿主机命令行模式
 
 ```bash
@@ -95,3 +117,4 @@ __download_device() {
 __download_device
 
 ```
+sed -i -e '/mirrors.cloud.aliyuncs.com/d' -e '/mirrors.aliyuncs.com/d' /etc/yum.repos.d/CentOS-Base.repo

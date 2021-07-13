@@ -67,12 +67,23 @@ __docker_init() {
     echo 'ok'
 }
 
+__yum_repos_d() {
+    # 将阿里云源复制进去
+    rm -rf /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d
+    mkdir -p /config/workspace/kickstart/bulid/dcache/res/file/yum.repos.d/
+
+    rm -rf /etc/yum.repos.d/epel.repo
+    rm -rf /etc/yum.repos.d/CentOS-Base.repo
+    cp -rf $_file/yum.repos.d/* /etc/yum.repos.d/
+}
+
 __system_init() {
     # 开机免输入密码
     sed -i 's,^ExecStart=.*$,ExecStart=-/sbin/agetty --autologin root --noclear %I,' /etc/systemd/system/getty.target.wants/getty@tty1.service
 }
 
 __init_ages
+__yum_repos_d
 __install_rpm >/root/install/install_rpm.log
 __docker_config
 __system_init
