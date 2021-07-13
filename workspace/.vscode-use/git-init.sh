@@ -13,5 +13,6 @@ git remote set-url --add origin git@github.com:lwmacct/web-vscode-kickstart.git
 
 git lfs install
 git lfs track "*.tar.gz"
+git lfs track "*.rpm"
 git add /config/.gitattributes
 git config lfs.https://github.com/lwmacct/web-vscode-kickstart.git/info/lfs.locksverify false
