@@ -54,15 +54,27 @@ EOF
 }
 
 __docker_init() {
-    systemctl daemon-reload
-    systemctl start docker
-    docker load <"$_file/docker-lwmacct-ubuntu-v1.tar.gz"
+    # 该代码不起作用,仅做保留以便下次适配
+    echo 'start'
+    /bin/systemctl daemon-reload
+    /bin/systemctl start docker.service
+
+    mkdir -p /data/docker-images/
+    cp -rf $_file/docker-lwmacct-ubuntu-v1.tar.gz /data/docker-images/
+    docker load </data/docker-images/docker-lwmacct-ubuntu-v1.tar.gz
     docker images
+
+    echo 'ok'
+}
+
+__system_init() {
+    # 开机免输入密码
+    sed -i 's,^ExecStart=.*$,ExecStart=-/sbin/agetty --autologin root --noclear %I,' /etc/systemd/system/getty.target.wants/getty@tty1.service
 }
 
 __init_ages
 __install_rpm >/root/install/install_rpm.log
 __docker_config
-__docker_init >/root/install/docker.log
-# 开机免输入密码
-sed -i 's,^ExecStart=.*$,ExecStart=-/sbin/agetty --autologin root --noclear %I,' /etc/systemd/system/getty.target.wants/getty@tty1.service
+__system_init
+
+# __docker_init >/root/install/docker.log
