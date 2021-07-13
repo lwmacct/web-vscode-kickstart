@@ -1,0 +1,12 @@
+data/logs/*
+data/clp/*
+data/User/state/*
+data/User/workspaceStorage/*
+.local/share/code-server/*
+.bash_history
+.ssh/*
+.cache/*
+workspace/iso/*
+workspace/kickstart/mkisofs/*
+workspace/kickstart/bulid/docker-ce/finish/*
+workspace/kickstart/bulid/dcache/finish/*
