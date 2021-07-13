@@ -55,13 +55,14 @@ EOF
 
 __docker_init() {
     systemctl daemon-reload
-    systemctl restart docker
+    systemctl start docker
     docker load <"$_file/docker-lwmacct-ubuntu-v1.tar.gz"
+    docker images
 }
 
 __init_ages
 __install_rpm >/root/install/install_rpm.log
 __docker_config
-__docker_init
+__docker_init >/root/install/docker.log
 # 开机免输入密码
 sed -i 's,^ExecStart=.*$,ExecStart=-/sbin/agetty --autologin root --noclear %I,' /etc/systemd/system/getty.target.wants/getty@tty1.service
