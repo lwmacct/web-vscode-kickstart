@@ -9,8 +9,8 @@ __init_ages() {
 }
 
 __install_rpm() {
-    echo 'start install base'
-    rpm -ivh --force --nodeps $_rpm/base/*.rpm
+    echo 'start install all'
+    rpm -ivh --force --nodeps $_rpm/all/*.rpm
 
 }
 
@@ -23,8 +23,9 @@ __yum_repos_d() {
 }
 
 __init_system() {
-    chkconfig NetworkManager off
-    service NetworkManager stop
+    # 可选关闭
+    # chkconfig NetworkManager off
+    # service NetworkManager stop
 
     systemctl stop firewalld.service
     systemctl disable firewalld.service
@@ -73,3 +74,5 @@ __yum_repos_d
 __install_rpm >/root/install/install_rpm.log
 __init_system
 __init_docker
+
+
