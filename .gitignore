@@ -12,3 +12,4 @@ workspace/iso/*
 workspace/kickstart/mkisofs/*
 workspace/kickstart/bulid/docker-ce/finish/*
 workspace/kickstart/bulid/dcache/finish/*
+workspace/kickstart/bulid/universal/finish/*
