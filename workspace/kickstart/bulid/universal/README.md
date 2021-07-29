@@ -68,12 +68,13 @@ __set_mirrors() {
 __set_mirrors
 ```
 
+# 离线下载 RPM 包
 ```bash
 __download_all() {
     yum install --downloadonly --downloaddir=/rpm/all \
         abrt-addon-ccpp abrt-addon-python abrt-cli abrt-console-notification at attr bash-completion bind-utils blktrace bpftool bridge-utils bzip2 centos-indexhtml chrony crda crontabs cryptsetup cyrus-sasl-plain dmraid dosfstools ed ethtool file fprintd-pam hunspell hunspell-en kmod-kvdo kpatch ledmon libaio libreport-plugin-mailx libstoragemgmt logrotate lsof lvm2 man-db man-pages man-pages-overrides mdadm mlocate mtr nano net-tools ntpdate ntsysv pciutils pinfo plymouth pm-utils psacct quota rdate rfkill rng-tools rsync scl-utils setserial setuptool smartmontools sos sssd-client strace sysstat systemtap-runtime tcpdump tcsh teamd time traceroute unzip usb_modeswitch usbutils vdo vim-enhanced virt-what wget which words xfsdump yum-langpacks zip \
         e2fsprogs hdparm libaio-devel log4cplus log4cplus-devel lshw ntp parted psmisc xfsprogs-devel \
-        lrzsz socat dstat glances jq tree bridge-utils \
+        lrzsz socat dstat glances jq tree \
         ipmitool open-vm-tools \
         yum-utils device-mapper-persistent-data lvm2 docker-ce
 
