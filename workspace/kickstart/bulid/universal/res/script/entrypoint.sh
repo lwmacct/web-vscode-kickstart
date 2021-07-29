@@ -12,15 +12,6 @@ __install_rpm() {
     echo 'start install base'
     rpm -ivh --force --nodeps $_rpm/base/*.rpm
 
-    echo 'start install dcache'
-    rpm -ivh --force --nodeps $_rpm/dcache/*.rpm
-
-    echo 'start install device'
-    rpm -ivh --force --nodeps $_rpm/device/*.rpm
-
-    echo 'start install docker-ce'
-    rpm -ivh --force --nodeps $_rpm/docker-ce/*.rpm
-
 }
 
 __yum_repos_d() {
